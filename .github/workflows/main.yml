@@ -1,0 +1,19 @@
+name: Descomprimir archivo ZIP
+on: push
+jobs:
+  descomprimir:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v4
+      
+      - name: Descomprimir archivo
+        run: unzip proyecto.zip -d carpeta_destino
+        
+      - name: Guardar cambios
+        run: |
+          git config --global user.name 'KuroKora'
+          git config --global user.email 'kurojkuro@gmail.com'
+          git add .
+          git commit -m "Archivos descomprimidos"
+          git push
